@@ -244,11 +244,11 @@ button:
           id(${prefix_id}threshold_upper).make_call().set_value(roundf(upper_threshold * 10) / 10).perform();
 
 i2c:
-  - id: ${prefix_id}i2c_bus
+  - id: bus_b
     scl: ${i2c_scl}
     sda: ${i2c_sda}
-    frequency: 50kHz
-    scan: false
+    frequency: 50000 Hz
+    scan: true
 
 sensor:
   # Holds the magnetic field strength value of x, y, or z depending on the axis template select.
@@ -274,7 +274,7 @@ sensor:
   # https://esphome.io/components/sensor/qmc5883l.html
   - platform: qmc5883l
     id: ${prefix_id}qmc5883l_id
-    i2c_id: ${prefix_id}i2c_bus
+    i2c_id: bus_b
     address: 0x0D
     field_strength_x:
       id: ${prefix_id}qmc5883l_axis_x
