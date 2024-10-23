@@ -247,7 +247,7 @@ i2c:
   - id: bus_b
     scl: ${i2c_scl}
     sda: ${i2c_sda}
-    frequency: 50000 Hz
+    frequency: 800kHz
     scan: true
 
 sensor:
