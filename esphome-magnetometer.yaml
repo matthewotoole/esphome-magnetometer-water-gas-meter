@@ -28,6 +28,9 @@ substitutions:
   hide_magnetic_field_strength_sensors: 'true'
   hide_half_rotations_total_sensor: 'true'
 
+  i2c_bus: i2c_bus
+  scan: false
+
 esphome:
   min_version: "2024.4.0" # This version includes https://github.com/esphome/esphome/pull/6456
   # Default loop interval is 16ms. Setting it to 0 to make updates faster.
@@ -244,11 +247,11 @@ button:
           id(${prefix_id}threshold_upper).make_call().set_value(roundf(upper_threshold * 10) / 10).perform();
 
 i2c:
-  - id: ${prefix_id}i2c_bus
+  - id: ${prefix_id}${i2c_bus}
     scl: ${i2c_scl}
     sda: ${i2c_sda}
     frequency: 50kHz
-    scan: false
+    scan: ${scan}
 
 sensor:
   # Holds the magnetic field strength value of x, y, or z depending on the axis template select.
